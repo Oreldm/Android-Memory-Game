@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">MemoryGame</string>
     <string name="title_activity_welcome_page">Welcome</string>
+    <string name="title_activity_start_game">StartGameActivity</string>
+
+    <string-array name="level_arr">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
 </resources>

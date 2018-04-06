@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#006699"
-    tools:context=".WelcomePage">
+    tools:context=".Activities.WelcomePageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/nameInput"
+                android:id="@+id/nameInputID"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -124,7 +124,8 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/fab_margin"
             android:gravity="center"
-            android:text="Start Game" />
+            android:text="Start Game"
+            android:onClick="onClick"/>
 
     </LinearLayout>
 

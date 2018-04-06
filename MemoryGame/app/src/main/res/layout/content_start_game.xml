@@ -5,16 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activities.WelcomePageActivity"
-    tools:showIn="@layout/activity_welcome_page">
+    tools:context=".Activities.StartGameActivity"
+    tools:showIn="@layout/activity_start_game">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="194dp" />
+
 </android.support.constraint.ConstraintLayout>
