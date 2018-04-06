@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#006699"
+    tools:context=".WelcomePage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layoutDirection="ltr">
+
+        <TextView
+            android:id="@+id/welcomeStr"
+            android:layout_width="match_parent"
+            android:layout_height="158dp"
+            android:gravity="center"
+            android:text="Welcome!"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            android:gravity="center"
+            android:text="Please write your name and your age"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layoutDirection="ltr">
+
+            <TextView
+                android:id="@+id/textViewmargin"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="10dp"
+                android:text=" " />
+
+            <TextView
+                android:id="@+id/nameStr"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="name:      "
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/nameInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:maxLength="7"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layoutDirection="ltr">
+
+            <TextView
+                android:id="@+id/textViewmargin1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="10dp"
+                android:text=" " />
+
+            <TextView
+                android:id="@+id/ageStrID"
+                android:layout_width="319dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="age:      "
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/ageInputID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="2"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/textViewmargin2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/startGameButtonID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/fab_margin"
+            android:gravity="center"
+            android:text="Start Game" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
