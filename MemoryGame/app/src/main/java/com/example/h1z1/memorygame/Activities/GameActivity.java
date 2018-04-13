@@ -31,11 +31,13 @@ import static java.security.AccessController.getContext;
 
 public class GameActivity extends AppCompatActivity {
     private Timer myTimer;
+    TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        text= new TextView(this);
         myTimer = new Timer();
         myTimer.schedule(new TimerTask() {
             @Override
@@ -75,6 +77,8 @@ public class GameActivity extends AppCompatActivity {
         }
         tableLayout.setShrinkAllColumns(true);
         tableLayout.setGravity(Gravity.CENTER_HORIZONTAL+Gravity.CENTER);
+        text.setText("timer");
+        tableLayout.addView(text);
         setContentView(tableLayout);
     }
 
@@ -87,10 +91,11 @@ public class GameActivity extends AppCompatActivity {
         //through the runOnUiThread method.
         this.runOnUiThread(Timer_Tick);
     }
-
+    static int a = 0;
     private Runnable Timer_Tick = new Runnable() {
         public void run() {
-            
+            text.setText(Integer.toString(a));
+            a++;
 
         }
     };
