@@ -1,5 +1,6 @@
 package com.example.h1z1.memorygame.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,6 +28,13 @@ public class StartGameActivity extends AppCompatActivity {
         String age = welcomePageData.getString("age");
         ((TextView)findViewById(R.id.usernameID)).setText(username);
         ((TextView)findViewById(R.id.textView5)).setText(age);
+    }
+
+
+    public void onClick(View view){
+        Intent i = new Intent(this, GameActivity.class);
+
+        startActivity(i);
     }
 
 }

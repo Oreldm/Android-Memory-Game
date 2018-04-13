@@ -8,4 +8,5 @@
         <item>Medium</item>
         <item>Hard</item>
     </string-array>
+    <string name="title_activity_game">GameActivity</string>
 </resources>
