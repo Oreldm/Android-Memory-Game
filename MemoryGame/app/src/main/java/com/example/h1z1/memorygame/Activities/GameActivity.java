@@ -1,20 +1,8 @@
 package com.example.h1z1.memorygame.Activities;
 
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.health.TimerStat;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -22,12 +10,8 @@ import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
 
-import org.w3c.dom.Text;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
-import static java.security.AccessController.getContext;
 
 public class GameActivity extends AppCompatActivity {
     private Timer myTimer;
@@ -69,7 +53,7 @@ public class GameActivity extends AppCompatActivity {
                     buttonTransperant.setHeight(1);
                     tableRow.addView(buttonTransperant);
                 }*/
-                CardListener card= new CardListener(this,R.drawable.animals_1);
+                Card card= new Card(this);
                 tableRow.addView(card.button);
                // button.setOnClickListener(imgButtonHandler);
             }

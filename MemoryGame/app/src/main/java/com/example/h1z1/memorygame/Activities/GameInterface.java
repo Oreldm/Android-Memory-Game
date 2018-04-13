@@ -7,6 +7,7 @@ public interface GameInterface {
         EASY(3), MEDIUM(4), HARD(5);
 
         private final int value;
+
         private LEVELS(int value) {
             this.value = value;
         }
