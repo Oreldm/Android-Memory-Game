@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
@@ -32,8 +33,18 @@ public class StartGameActivity extends AppCompatActivity {
 
 
     public void onClick(View view){
-        Intent i = new Intent(this, GameActivity.class);
+        Spinner mySpinner=(Spinner) findViewById(R.id.spinner);
+        String level = mySpinner.getSelectedItem().toString();
+        int width = GameInterface.LEVELS.HARD.getValue();
 
+        if(level.toString().toLowerCase().equals(GameInterface.LEVELS.EASY.toString().toLowerCase())){
+            width=GameInterface.LEVELS.EASY.getValue();
+        } else if (level.toString().toLowerCase().equals(GameInterface.LEVELS.MEDIUM.toString().toLowerCase())){
+            width=GameInterface.LEVELS.MEDIUM.getValue();
+        }
+
+        Intent i = new Intent(this, GameActivity.class);
+        i.putExtra("cardWidth",width);
         startActivity(i);
     }
 

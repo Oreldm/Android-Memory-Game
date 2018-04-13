@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -23,29 +24,37 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int width=5;
-        int weigth=4;
+
+        Bundle gameIntentData = getIntent().getExtras();
+        int width = gameIntentData.getInt("cardWidth");
+        int height=4;
+
+        RelativeLayout relativeLayout = new RelativeLayout(this);
+
         TableLayout tableLayout = new TableLayout(this);
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < height; i++)
         {
             TableRow tableRow = new TableRow(this);
-            Button button = new Button(this);
-            button.setText("1");
-            tableRow.addView(button);
-
-            button = new Button(this);
-            button.setText("2");
-            tableRow.addView(button);
-
-            button = new Button(this);
-            button.setText("3");
-            tableRow.addView(button);
-
+            for (int j = 0; j < width; j++)
+            {
+                /*
+                if(width==3 && j==0){
+                    //for alignment to center
+                    Button buttonTransperant = new Button(this);
+                    buttonTransperant.setVisibility(View.VISIBLE);
+                    buttonTransperant.setBackgroundColor(Color.TRANSPARENT);
+                    buttonTransperant.setWidth(1);
+                    buttonTransperant.setHeight(1);
+                    tableRow.addView(buttonTransperant);
+                }*/
+                Button button = new Button(this);
+                button.setText("wr");
+                tableRow.addView(button);
+            }
             tableLayout.addView(tableRow);
         }
+        tableLayout.setShrinkAllColumns(true);
+        tableLayout.setGravity(Gravity.CENTER_HORIZONTAL+Gravity.CENTER);
         setContentView(tableLayout);
     }
-
-
-
 }
