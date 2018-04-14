@@ -14,16 +14,18 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
-    private Timer myTimer;
-    TextView text;
+    TextView text; //timer text
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        text= new TextView(this);
-        myTimer = new Timer();
-        myTimer.schedule(new TimerTask() {
+        Bundle gameIntentData = getIntent().getExtras();
+        int width = gameIntentData.getInt("cardWidth");
+        int height=4;
+        Board board= new Board(this,width,height);
+        text=board.text;
+        board.myTimer = new Timer();
+        board.myTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 TimerMethod();
@@ -31,40 +33,10 @@ public class GameActivity extends AppCompatActivity {
 
         }, 0, 1000);
 
-        Bundle gameIntentData = getIntent().getExtras();
-        int width = gameIntentData.getInt("cardWidth");
-        int height=4;
 
-        RelativeLayout relativeLayout = new RelativeLayout(this);
-
-        TableLayout tableLayout = new TableLayout(this);
-        for (int i = 0; i < height; i++)
-        {
-            TableRow tableRow = new TableRow(this);
-            for (int j = 0; j < width; j++)
-            {
-                /*
-                if(width==3 && j==0){
-                    //for alignment to center
-                    Button buttonTransperant = new Button(this);
-                    buttonTransperant.setVisibility(View.VISIBLE);
-                    buttonTransperant.setBackgroundColor(Color.TRANSPARENT);
-                    buttonTransperant.setWidth(1);
-                    buttonTransperant.setHeight(1);
-                    tableRow.addView(buttonTransperant);
-                }*/
-                Card card= new Card(this);
-                tableRow.addView(card.button);
-               // button.setOnClickListener(imgButtonHandler);
-            }
-            tableLayout.addView(tableRow);
-        }
-        tableLayout.setShrinkAllColumns(true);
-        tableLayout.setGravity(Gravity.CENTER_HORIZONTAL+Gravity.CENTER);
-        text.setText("timer");
-        tableLayout.addView(text);
-        setContentView(tableLayout);
+        setContentView(board.tableLayout);
     }
+
 
     private void TimerMethod()
     {
@@ -83,5 +55,7 @@ public class GameActivity extends AppCompatActivity {
 
         }
     };
+
+
 
 }
