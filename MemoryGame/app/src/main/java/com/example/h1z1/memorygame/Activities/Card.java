@@ -14,18 +14,28 @@ public class Card {
     public static int lastCardIndex = 0;
 
     Context context;
-    int cardIndex;
+    public int cardIndex;
     public Button button;
 
-    public Card(Context context){
+    public Card(Context context, boolean isNextCard){
         this.context=context;
         button=new Button(context);
         button.setText("CARD");
         button.setBackgroundResource(R.drawable.tile);
         this.cardIndex=lastCardIndex;
-        lastCardIndex++;
+        button.setOnClickListener(imgButtonHandler);
+        if(isNextCard)
+            lastCardIndex++;
         if(lastCardIndex==10)
             lastCardIndex=0;
+    }
+
+    public Card(Context context, Card card){
+        this.context=context;
+        button=new Button(context);
+        button.setText("CARD");
+        button.setBackgroundResource(R.drawable.tile);
+        this.cardIndex=card.cardIndex;
         button.setOnClickListener(imgButtonHandler);
     }
 
@@ -33,10 +43,10 @@ public class Card {
     View.OnClickListener imgButtonHandler = new View.OnClickListener() {
 
         public void onClick(View v) {
-            Drawable drawable = ContextCompat.getDrawable(context.getApplicationContext(),R.drawable.animals_1);
+            button.setText("");
             Drawable dr = context.getResources().getDrawable(GameInterface.animals[cardIndex]);
             Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
-            Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, 10, 10, true));
+            Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, 30, 50, true));
             button.setBackground(d);
         }
     };

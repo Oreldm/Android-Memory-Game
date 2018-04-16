@@ -3,10 +3,15 @@ package com.example.h1z1.memorygame.Activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import com.example.h1z1.memorygame.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,6 +31,13 @@ public class Board {
         this.width =width;
         this.height=height;
 
+        Card cardArr[] = new Card[width*height];
+        for(int i=0; i<width*height;i=i+2){
+            cardArr[i]=new Card(context,false);
+            cardArr[i+1]=new Card(context,true);
+        }
+
+
         relativeLayout = new RelativeLayout(context);
 
         tableLayout = new TableLayout(context);
@@ -44,7 +56,7 @@ public class Board {
                     buttonTransperant.setHeight(1);
                     tableRow.addView(buttonTransperant);
                 }*/
-                Card card= new Card(context);
+                Card card = new Card(context, cardArr[width*i+j]);
                 tableRow.addView(card.button);
                 // button.setOnClickListener(imgButtonHandler);
             }
