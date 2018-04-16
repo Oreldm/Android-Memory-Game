@@ -13,8 +13,10 @@ import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Board {
     int width;
@@ -36,7 +38,7 @@ public class Board {
             cardArr[i]=new Card(context,false);
             cardArr[i+1]=new Card(context,true);
         }
-
+        shuffleArray(cardArr);
 
         relativeLayout = new RelativeLayout(context);
 
@@ -56,7 +58,7 @@ public class Board {
                     buttonTransperant.setHeight(1);
                     tableRow.addView(buttonTransperant);
                 }*/
-                Card card = new Card(context, cardArr[width*i+j]);
+                Card card = new Card(context, cardArr[width*i+j]); //added it because of parent viewgroup exception
                 tableRow.addView(card.button);
                 // button.setOnClickListener(imgButtonHandler);
             }
@@ -66,6 +68,21 @@ public class Board {
         tableLayout.setGravity(Gravity.CENTER_HORIZONTAL+Gravity.CENTER);
         text.setText("timer");
         tableLayout.addView(text);
+    }
+
+    private void shuffleArray(Card[] ar)
+    {
+        // Fisher–Yates shuffle
+        Random randIndex = ThreadLocalRandom.current();
+        for (int i = ar.length - 1; i > 0; i--)
+        {
+            int index = randIndex.nextInt(i + 1);
+
+            //swap
+            Card a = ar[index];
+            ar[index] = ar[i];
+            ar[i] = a;
+        }
     }
 
 }
