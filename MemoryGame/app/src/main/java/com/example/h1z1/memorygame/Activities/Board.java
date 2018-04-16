@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -21,16 +22,20 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Board {
     int width;
     int height;
-    RelativeLayout relativeLayout;
+    RelativeLayout.LayoutParams relativeParams;
+    RelativeLayout parentView;
     TableLayout tableLayout;
 
     public Timer myTimer;
     TextView text;
+    TextView nameText;
 
     public Board(Context context,int width,int height){ //singleton
+        parentView=new RelativeLayout(context);
         text= new TextView(context);
-
-        this.width =width;
+        nameText=new TextView(context);
+        LinearLayout linearLayout = new LinearLayout(context);
+        this.width=width;
         this.height=height;
 
         Card cardArr[] = new Card[width*height];
@@ -40,9 +45,22 @@ public class Board {
         }
         shuffleArray(cardArr);
 
-        relativeLayout = new RelativeLayout(context);
+        relativeParams = new RelativeLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        relativeParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+
 
         tableLayout = new TableLayout(context);
+
+//        TableRow row = new TableRow(context);
+        text.setText("timer");
+        nameText.setText("orel");
+
+
+  //      row.addView(text);
+    //    row.addView(nameText);
+    //    tableLayout.addView(row);
+
         for (int i = 0; i < height; i++)
         {
             TableRow tableRow = new TableRow(context);
@@ -66,8 +84,30 @@ public class Board {
         }
         tableLayout.setShrinkAllColumns(true);
         tableLayout.setGravity(Gravity.CENTER_HORIZONTAL+Gravity.CENTER);
-        text.setText("timer");
-        tableLayout.addView(text);
+        tableLayout.setId(3);
+
+        nameText.setId(244);
+        text.setId(245);
+
+
+
+        relativeParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        relativeParams.addRule(RelativeLayout.LEFT_OF,244);
+        linearLayout.addView(nameText);
+        relativeParams.setMargins(0,0,200,0);
+        linearLayout.addView(text,relativeParams);
+        relativeParams.setMargins(0,0,0,0);
+
+       //linearLayout.addView(text);
+        //linearLayout.addView(nameText);
+       // linearLayout.addView(tableLayout);
+
+        parentView.addView(linearLayout, relativeParams);
+        relativeParams.addRule(RelativeLayout.ALIGN_BOTTOM, 3);
+        //parentView.addView(nameText, relativeParams);
+        parentView.addView(tableLayout,relativeParams);
+        parentView.setLayoutParams(relativeParams);
+
     }
 
     private void shuffleArray(Card[] ar)

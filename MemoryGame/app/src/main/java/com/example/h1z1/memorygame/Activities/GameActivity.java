@@ -3,6 +3,7 @@ package com.example.h1z1.memorygame.Activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -14,16 +15,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity {
-    TextView text; //timer text
+    TextView timerText; //timer text
+    TextView nameText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        nameText=new TextView(this);
         Bundle gameIntentData = getIntent().getExtras();
         int width = gameIntentData.getInt("cardWidth");
         int height=4;
         Board board= new Board(this,width,height);
-        text=board.text;
+        timerText=board.text;
         board.myTimer = new Timer();
         board.myTimer.schedule(new TimerTask() {
             @Override
@@ -34,7 +38,7 @@ public class GameActivity extends AppCompatActivity {
         }, 0, 1000);
 
 
-        setContentView(board.tableLayout);
+        setContentView(board.parentView);
     }
 
 
@@ -50,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
     static int a = 0;
     private Runnable Timer_Tick = new Runnable() {
         public void run() {
-            text.setText(Integer.toString(a));
+            timerText.setText(Integer.toString(a));
             a++;
 
         }
