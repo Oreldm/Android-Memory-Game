@@ -62,6 +62,7 @@ public class GameActivity extends AppCompatActivity {
         //through the runOnUiThread method.
         this.runOnUiThread(Timer_Tick);
         if(counter==0){
+            WinLostActivity.status="You Lose!";
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
         }
