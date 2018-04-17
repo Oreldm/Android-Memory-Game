@@ -1,5 +1,6 @@
 package com.example.h1z1.memorygame.Activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
@@ -32,8 +33,12 @@ public class Board {
     public Timer myTimer;
     TextView text;
     TextView nameText;
+    private Activity activity;
 
-    public Board(Context context,int width,int height){ //singleton
+    public static Card cardUp=null;
+
+    public Board(Context context,int width,int height, Activity activity){ //singleton
+        this.activity=activity;
         parentView=new RelativeLayout(context);
         text= new TextView(context);
         nameText=new TextView(context);
@@ -43,8 +48,8 @@ public class Board {
 
         Card cardArr[] = new Card[width*height];
         for(int i=0; i<width*height;i=i+2){
-            cardArr[i]=new Card(context,false);
-            cardArr[i+1]=new Card(context,true);
+            cardArr[i]=new Card(context,false,activity);
+            cardArr[i+1]=new Card(context,true,activity);
         }
         shuffleArray(cardArr);
 

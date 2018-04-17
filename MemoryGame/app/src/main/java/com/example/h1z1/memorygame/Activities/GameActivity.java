@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
         }else
             counter=5;
         int height=4;
-        Board board= new Board(this,width,height);
+        Board board= new Board(this,width,height,this);
         timerText=board.text;
         board.myTimer = new Timer();
         board.myTimer.schedule(new TimerTask() {

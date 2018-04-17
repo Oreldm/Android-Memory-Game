@@ -1,5 +1,6 @@
 package com.example.h1z1.memorygame.Activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,18 +13,21 @@ import com.example.h1z1.memorygame.R;
 
 public class Card {
     public static int lastCardIndex = 0;
+    public boolean isUp=false;
 
     Context context;
     public int cardIndex;
     public Button button;
+    private Activity activity;
 
-    public Card(Context context, boolean isNextCard){
+    public Card(Context context, boolean isNextCard, Activity activity){
+        this.activity=activity;
         this.context=context;
         button=new Button(context);
         button.setText("CARD");
         button.setBackgroundResource(R.drawable.tile);
         this.cardIndex=lastCardIndex;
-        button.setOnClickListener(imgButtonHandler);
+        button.setOnClickListener(new CardListener(button,cardIndex,context,this,activity));
         if(isNextCard)
             lastCardIndex++;
         if(lastCardIndex==10)
@@ -36,19 +40,8 @@ public class Card {
         button.setText("CARD");
         button.setBackgroundResource(R.drawable.tile);
         this.cardIndex=card.cardIndex;
-        button.setOnClickListener(imgButtonHandler);
+        button.setOnClickListener(new CardListener(button,cardIndex,context,this,activity));
     }
 
-
-    View.OnClickListener imgButtonHandler = new View.OnClickListener() {
-
-        public void onClick(View v) {
-            button.setText("");
-            Drawable dr = context.getResources().getDrawable(GameInterface.animals[cardIndex]);
-            Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
-            Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, 30, 50, true));
-            button.setBackground(d);
-        }
-    };
 
 }
