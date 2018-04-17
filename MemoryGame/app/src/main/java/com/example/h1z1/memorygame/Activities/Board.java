@@ -1,10 +1,13 @@
 package com.example.h1z1.memorygame.Activities;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -52,33 +55,17 @@ public class Board {
 
         tableLayout = new TableLayout(context);
 
-//        TableRow row = new TableRow(context);
         text.setText("timer");
-        nameText.setText("orel");
-
-
-  //      row.addView(text);
-    //    row.addView(nameText);
-    //    tableLayout.addView(row);
+        nameText.setText(GameActivity.nameString);
 
         for (int i = 0; i < height; i++)
         {
             TableRow tableRow = new TableRow(context);
             for (int j = 0; j < width; j++)
             {
-                /*
-                if(width==3 && j==0){
-                    //for alignment to center
-                    Button buttonTransperant = new Button(this);
-                    buttonTransperant.setVisibility(View.VISIBLE);
-                    buttonTransperant.setBackgroundColor(Color.TRANSPARENT);
-                    buttonTransperant.setWidth(1);
-                    buttonTransperant.setHeight(1);
-                    tableRow.addView(buttonTransperant);
-                }*/
+
                 Card card = new Card(context, cardArr[width*i+j]); //added it because of parent viewgroup exception
                 tableRow.addView(card.button);
-                // button.setOnClickListener(imgButtonHandler);
             }
             tableLayout.addView(tableRow);
         }
@@ -94,17 +81,20 @@ public class Board {
         relativeParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         relativeParams.addRule(RelativeLayout.LEFT_OF,244);
         linearLayout.addView(nameText);
-        relativeParams.setMargins(0,0,200,0);
+
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int screenWidth = size.x;
+        int placeForCounter=screenWidth-(2*GameActivity.nameString.length()*GameActivity.nameString.length())-70;
+
+        relativeParams.setMargins(0,0,placeForCounter,0);
         linearLayout.addView(text,relativeParams);
         relativeParams.setMargins(0,0,0,0);
 
-       //linearLayout.addView(text);
-        //linearLayout.addView(nameText);
-       // linearLayout.addView(tableLayout);
-
         parentView.addView(linearLayout, relativeParams);
         relativeParams.addRule(RelativeLayout.ALIGN_BOTTOM, 3);
-        //parentView.addView(nameText, relativeParams);
         parentView.addView(tableLayout,relativeParams);
         parentView.setLayoutParams(relativeParams);
 

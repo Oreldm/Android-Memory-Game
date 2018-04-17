@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.h1z1.memorygame.R;
 
 public class StartGameActivity extends AppCompatActivity {
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class StartGameActivity extends AppCompatActivity {
         if(welcomePageData==null){
             return;
         }
-        String username = welcomePageData.getString("username");
+        username = welcomePageData.getString("username");
         String age = welcomePageData.getString("age");
         ((TextView)findViewById(R.id.usernameID)).setText(username);
         ((TextView)findViewById(R.id.textView5)).setText(age);
@@ -45,6 +46,7 @@ public class StartGameActivity extends AppCompatActivity {
 
         Intent i = new Intent(this, GameActivity.class);
         i.putExtra("cardWidth",width);
+        i.putExtra("username",username);
         startActivity(i);
     }
 
