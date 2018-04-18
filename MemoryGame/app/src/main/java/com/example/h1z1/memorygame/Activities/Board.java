@@ -106,6 +106,31 @@ public class Board {
         relativeParams.addRule(RelativeLayout.ALIGN_BOTTOM, 3);
         parentView.addView(tableLayout,relativeParams);
         parentView.setLayoutParams(relativeParams);
+      /*  LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(1, 0, 10, 0);
+        parentView.setLayoutParams(lp);*/
+
+        TableLayout.LayoutParams tableRowParams=
+                new TableLayout.LayoutParams
+                        (TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+
+
+
+        tableRowParams.setMargins(0, 0, screenWidth/16, 0);
+
+        if(width==3){
+
+            for(int i = 0, j = tableLayout.getChildCount(); i < j; i++) {
+                View view = tableLayout.getChildAt(i);
+                if (view instanceof TableRow) {
+                    // then, you can remove the the row you want...
+                    // for instance...
+                    TableRow row = (TableRow) view;
+                    row.setLayoutParams(tableRowParams);
+                }
+            }
+        }
+
 
     }
 
