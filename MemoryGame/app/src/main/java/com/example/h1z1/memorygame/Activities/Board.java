@@ -59,7 +59,7 @@ public class Board {
         tableLayout = new TableLayout(context);
         parentView.setBackgroundResource(R.drawable.gamebackground);
 
-        text.setText("timer");
+        text.setText(GameInterface.TIMER_STR);
         nameText.setText(GameActivity.nameString);
 
         for (int i = 0; i < height; i++)
@@ -93,9 +93,9 @@ public class Board {
         int screenWidth = size.x;
         int placeForCounter=screenWidth-(2*GameActivity.nameString.length()*GameActivity.nameString.length())-70;
 
-        relativeParams.setMargins(0,0,placeForCounter,0);
+        relativeParams.setMargins(GameInterface.ZERO,GameInterface.ZERO,placeForCounter,GameInterface.ZERO);
         linearLayout.addView(text,relativeParams);
-        relativeParams.setMargins(0,0,0,0);
+        relativeParams.setMargins(GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO);
 
         parentView.addView(linearLayout, relativeParams);
         relativeParams.addRule(RelativeLayout.ALIGN_BOTTOM, 3);
@@ -108,9 +108,9 @@ public class Board {
 
 
 
-        tableRowParams.setMargins(0, 0, screenWidth/16, 0);
+        tableRowParams.setMargins(GameInterface.ZERO, GameInterface.ZERO, screenWidth/16, GameInterface.ZERO);
 
-        if(width==3){
+        if(width==GameInterface.LEVELS.EASY.getValue()){
 
             for(int i = 0, j = tableLayout.getChildCount(); i < j; i++) {
                 View view = tableLayout.getChildAt(i);

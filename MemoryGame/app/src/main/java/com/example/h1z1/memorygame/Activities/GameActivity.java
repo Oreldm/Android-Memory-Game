@@ -1,20 +1,12 @@
 package com.example.h1z1.memorygame.Activities;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
-
-import com.example.h1z1.memorygame.R;
-
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class GameActivity extends AppCompatActivity {
     TextView timerText; //timer text
@@ -23,21 +15,20 @@ public class GameActivity extends AppCompatActivity {
     static int counter = 0;
     static int cardsUp=0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle gameIntentData = getIntent().getExtras();
         nameText=new TextView(this);
-        nameString=gameIntentData.getString("username");
-        int width = gameIntentData.getInt("cardWidth");
+        nameString=gameIntentData.getString(GameInterface.usernameKey);
+        int width = gameIntentData.getInt(GameInterface.CARD_WIDTH_KEY);
         if(width==GameInterface.LEVELS.HARD.getValue()){
-            counter=60;
+            counter=GameInterface.HARD_TIMER;
         } else if(width==GameInterface.LEVELS.MEDIUM.getValue()){
-            counter=45;
+            counter=GameInterface.MEDIUM_TIMER;
         }else
-            counter=30;
-        int height=4;
+            counter=GameInterface.EASY_TIMER;
+        int height=GameInterface.BOARD_WIDTH;
         final Board board= new Board(this,width,height,this);
         timerText=board.text;
 
@@ -47,18 +38,18 @@ public class GameActivity extends AppCompatActivity {
 
     private boolean TimerMethod()
     {
-        if(counter==0){
-            WinLostActivity.status="You Lose!";
+        if(counter==GameInterface.ZERO){
+            WinLostActivity.status=GameInterface.LOSE_STR;
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
-            cardsUp=0;
+            cardsUp=GameInterface.ZERO;
             finish();
             return false;
         } else if(GameActivity.cardsUp==Board.width*Board.height){
-            WinLostActivity.status="You Win!";
+            WinLostActivity.status=GameInterface.WIN_STR;
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
-            cardsUp=0;
+            cardsUp=GameInterface.ZERO;
             finish();
             return false;
         }else{
@@ -94,7 +85,7 @@ public class GameActivity extends AppCompatActivity {
                     }
                 }
 
-            }, 0, 1000);
+            }, GameInterface.ZERO, GameInterface.DELAY_1000MS);
         }
         else{
             Board.myTimer.cancel();

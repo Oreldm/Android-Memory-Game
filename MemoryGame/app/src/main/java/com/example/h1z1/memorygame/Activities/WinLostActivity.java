@@ -17,7 +17,7 @@ import java.util.TimerTask;
 
 public class WinLostActivity extends AppCompatActivity {
 
-    public static String status="Win";
+    public static String status=GameInterface.WIN_STR;
     Context context=this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class WinLostActivity extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        }, 1500);
+        }, (GameInterface.DELAY_1000MS+GameInterface.DELAY_1000MS/2));
 
 
     }

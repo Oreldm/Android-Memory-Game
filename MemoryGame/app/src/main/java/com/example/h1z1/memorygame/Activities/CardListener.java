@@ -15,11 +15,13 @@ import com.example.h1z1.memorygame.R;
 
 public class CardListener implements View.OnClickListener
 {
+    private final static int MARGIN_TO_ADD=100;
     Button button;
     int cardIndex;
     Context context;
     Card card;
     Activity activity;
+    private final static int PAIR=2;
 
 
     public CardListener(Button button, int cardIndex, Context context,Card card, Activity activity) {
@@ -47,27 +49,27 @@ public class CardListener implements View.OnClickListener
         int height = dimensions.outHeight;
         int width =  dimensions.outWidth;
 
-        Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, width+100, height+100, true));
+        Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, width+MARGIN_TO_ADD, height+MARGIN_TO_ADD, true));
         button.setBackground(d);
 
 
         if(Board.cardUp!=null){
             if(Board.cardUp.cardIndex==this.cardIndex){
-                GameActivity.cardsUp+=2;
+                GameActivity.cardsUp+=PAIR;
                 Board.cardUp=null;
                 return;
             } else{
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
-                        button.setText("CARD");
+                        button.setText(GameInterface.CARD_STR);
                         button.setBackgroundResource(R.drawable.tile);
                         card.isUp=false;
-                        Board.cardUp.button.setText("CARD");
+                        Board.cardUp.button.setText(GameInterface.CARD_STR);
                         Board.cardUp.button.setBackgroundResource(R.drawable.tile);
                         Board.cardUp=null;
                     }
-                }, 1000);
+                }, GameInterface.DELAY_1000MS);
             }
             Board.cardUp.isUp=false;
         }else{

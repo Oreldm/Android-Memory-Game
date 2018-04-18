@@ -2,11 +2,6 @@ package com.example.h1z1.memorygame.Activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.view.View;
 import android.widget.Button;
 
 import com.example.h1z1.memorygame.R;
@@ -24,20 +19,20 @@ public class Card {
         this.activity=activity;
         this.context=context;
         button=new Button(context);
-        button.setText("CARD");
+        button.setText(GameInterface.CARD_STR);
         button.setBackgroundResource(R.drawable.tile);
         this.cardIndex=lastCardIndex;
         button.setOnClickListener(new CardListener(button,cardIndex,context,this,activity));
         if(isNextCard)
             lastCardIndex++;
         if(lastCardIndex==10)
-            lastCardIndex=0;
+            lastCardIndex=GameInterface.ZERO;
     }
 
     public Card(Context context, Card card){
         this.context=context;
         button=new Button(context);
-        button.setText("CARD");
+        button.setText(GameInterface.CARD_STR);
         button.setBackgroundResource(R.drawable.tile);
         this.cardIndex=card.cardIndex;
         button.setOnClickListener(new CardListener(button,cardIndex,context,this,activity));
