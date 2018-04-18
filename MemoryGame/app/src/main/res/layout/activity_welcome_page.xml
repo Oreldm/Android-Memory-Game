@@ -124,7 +124,7 @@
             android:layout_weight="1"
             android:layout_margin="@dimen/fab_margin"
             android:gravity="center"
-            android:text=">> Press Here to Start Game <<"
+            android:text=" --PRESS HERE TO START GAME-- "
             android:textColor="@android:color/white"
             android:background="@android:color/transparent"
             android:onClick="onClick"/>

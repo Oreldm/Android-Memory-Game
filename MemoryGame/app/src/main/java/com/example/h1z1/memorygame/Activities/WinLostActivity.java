@@ -24,7 +24,7 @@ public class WinLostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         RelativeLayout layout=new RelativeLayout(this);
-        layout.setBackgroundColor(Color.GREEN);
+        layout.setBackgroundResource(R.drawable.backgroundstartgameleft);
 
         RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -36,7 +36,7 @@ public class WinLostActivity extends AppCompatActivity {
 
         Button redButton = new Button(this);
         redButton.setText(status);
-        redButton.setBackgroundColor(Color.RED);
+        redButton.setBackgroundColor(Color.TRANSPARENT);
 
         layout.addView(redButton, buttonDetails);
         setContentView(layout);
