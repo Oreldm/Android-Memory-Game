@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class WinLostActivity extends AppCompatActivity {
 
     public static String status="Win";
@@ -41,12 +44,20 @@ public class WinLostActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                Intent i = new Intent(context, StartGameActivity.class);
-                startActivity(i);
                 finish();
             }
-        }, 2000);
+        }, 1500);
 
 
+    }
+
+    private boolean isInFocus = false;
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        isInFocus = hasFocus;
+        if(!hasFocus){
+            finish();
+        }
     }
 }
