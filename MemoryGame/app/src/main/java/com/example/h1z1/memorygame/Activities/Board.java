@@ -2,16 +2,12 @@ package com.example.h1z1.memorygame.Activities;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -22,7 +18,6 @@ import com.example.h1z1.memorygame.R;
 
 import java.util.Random;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Board {
@@ -106,9 +101,6 @@ public class Board {
         relativeParams.addRule(RelativeLayout.ALIGN_BOTTOM, 3);
         parentView.addView(tableLayout,relativeParams);
         parentView.setLayoutParams(relativeParams);
-      /*  LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        lp.setMargins(1, 0, 10, 0);
-        parentView.setLayoutParams(lp);*/
 
         TableLayout.LayoutParams tableRowParams=
                 new TableLayout.LayoutParams
@@ -123,8 +115,6 @@ public class Board {
             for(int i = 0, j = tableLayout.getChildCount(); i < j; i++) {
                 View view = tableLayout.getChildAt(i);
                 if (view instanceof TableRow) {
-                    // then, you can remove the the row you want...
-                    // for instance...
                     TableRow row = (TableRow) view;
                     row.setLayoutParams(tableRowParams);
                 }
