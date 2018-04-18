@@ -1,17 +1,24 @@
 package com.example.h1z1.memorygame.Activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class StartGameActivity extends AppCompatActivity {
     String username;
@@ -30,6 +37,14 @@ public class StartGameActivity extends AppCompatActivity {
         String age = welcomePageData.getString("age");
         ((TextView)findViewById(R.id.usernameID)).setText(username);
         ((TextView)findViewById(R.id.textView5)).setText(age);
+
+        ArrayList<String> array = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.level_arr)));
+
+        Spinner spinner;
+        ArrayAdapter<String> mAdapter;
+        spinner = (Spinner) findViewById(R.id.spinner);
+        mAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, array);
+        spinner.setAdapter(mAdapter);
     }
 
 

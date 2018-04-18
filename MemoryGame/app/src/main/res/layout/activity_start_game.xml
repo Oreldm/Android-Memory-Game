@@ -63,13 +63,13 @@
             android:layoutDirection="ltr">
 
             <Space
-                android:layout_width="213dp"
-                android:layout_height="wrap_content"
+                android:layout_width="196dp"
+                android:layout_height="19dp"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="205dp"
+                android:layout_width="253dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Level:"
@@ -87,7 +87,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:dropDownWidth="match_parent"
-                android:entries="@array/level_arr"
+                android:popupBackground="@null"
+                android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
