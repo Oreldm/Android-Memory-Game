@@ -3,6 +3,7 @@ package com.example.h1z1.memorygame.Activities;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -40,7 +41,13 @@ public class CardListener implements View.OnClickListener
         button.setText("");
         Drawable dr = context.getResources().getDrawable(GameInterface.animals[cardIndex]);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
-        Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, 30, 50, true));
+        BitmapFactory.Options dimensions = new BitmapFactory.Options();
+        dimensions.inJustDecodeBounds = true;
+        Bitmap mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.tile, dimensions);
+        int height = dimensions.outHeight;
+        int width =  dimensions.outWidth;
+
+        Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, width+100, height+100, true));
         button.setBackground(d);
 
 
