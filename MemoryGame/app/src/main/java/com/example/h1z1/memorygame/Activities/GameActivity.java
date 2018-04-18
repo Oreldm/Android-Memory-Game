@@ -20,6 +20,7 @@ public class GameActivity extends AppCompatActivity {
     TextView nameText;
     static String nameString;
     static int counter = 0;
+    static int cardsUp=0;
 
 
     @Override
@@ -36,35 +37,51 @@ public class GameActivity extends AppCompatActivity {
         }else
             counter=5;
         int height=4;
-        Board board= new Board(this,width,height,this);
+        final Board board= new Board(this,width,height,this);
         timerText=board.text;
-        board.myTimer = new Timer();
+        /*board.myTimer = new Timer();
         board.myTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                TimerMethod();
-            }
+                @Override
+                public void run() {
+                    boolean shouldStop=TimerMethod();
+                    if(!shouldStop){
+                        board.myTimer.cancel();
+                        board.myTimer.purge();
+                    }
+                }
 
         }, 0, 1000);
-
+*/
 
 
         setContentView(board.parentView);
     }
 
 
-    private void TimerMethod()
+    private boolean TimerMethod()
     {
         //This method is called directly by the timer
         //and runs in the same thread as the timer.
 
         //We call the method that will work with the UI
         //through the runOnUiThread method.
-        this.runOnUiThread(Timer_Tick);
         if(counter==0){
             WinLostActivity.status="You Lose!";
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
+            cardsUp=0;
+            finish();
+            return false;
+        } else if(GameActivity.cardsUp==Board.width*Board.height){
+            WinLostActivity.status="You Win!";
+            Intent i = new Intent(this, WinLostActivity.class);
+            startActivity(i);
+            cardsUp=0;
+            finish();
+            return false;
+        }else{
+            this.runOnUiThread(Timer_Tick);
+            return true;
         }
     }
 
@@ -76,6 +93,44 @@ public class GameActivity extends AppCompatActivity {
         }
     };
 
+
+    private boolean isInFocus = false;
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        /*Board.myTimer.cancel();
+        Board.myTimer.purge();*/
+        isInFocus = hasFocus;
+        if(hasFocus){
+            Board.myTimer=new Timer();
+            Board.myTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    boolean shouldStop=TimerMethod();
+                    if(!shouldStop){
+                        Board.myTimer.cancel();
+                        Board.myTimer.purge();
+                    }
+                }
+
+            }, 0, 1000);
+        }
+        else{
+            Board.myTimer.cancel();
+            Board.myTimer.purge();
+            finish();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        /*
+        Board.myTimer.cancel();
+        Board.myTimer.purge();*/
+        if (!isInFocus) finish();
+    }
 
 
 }

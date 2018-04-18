@@ -24,13 +24,13 @@ import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Board {
-    int width;
-    int height;
+    static int width;
+    static int height;
     RelativeLayout.LayoutParams relativeParams;
     RelativeLayout parentView;
     TableLayout tableLayout;
 
-    public Timer myTimer;
+    static public Timer myTimer;
     TextView text;
     TextView nameText;
     private Activity activity;

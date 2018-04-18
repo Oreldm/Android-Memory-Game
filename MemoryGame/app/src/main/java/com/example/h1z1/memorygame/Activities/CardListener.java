@@ -12,8 +12,6 @@ import android.widget.Button;
 
 import com.example.h1z1.memorygame.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class CardListener implements View.OnClickListener
 {
@@ -48,10 +46,8 @@ public class CardListener implements View.OnClickListener
 
 
         if(Board.cardUp!=null){
-
-
-
             if(Board.cardUp.cardIndex==this.cardIndex){
+                GameActivity.cardsUp+=2;
                 Board.cardUp=null;
                 return;
             } else{
@@ -65,7 +61,7 @@ public class CardListener implements View.OnClickListener
                         Board.cardUp.button.setBackgroundResource(R.drawable.tile);
                         Board.cardUp=null;
                     }
-                }, 2000);
+                }, 1000);
             }
             Board.cardUp.isUp=false;
         }else{
