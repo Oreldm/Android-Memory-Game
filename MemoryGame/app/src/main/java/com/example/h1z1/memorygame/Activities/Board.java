@@ -34,7 +34,7 @@ public class Board {
 
     public static Card cardUp=null;
 
-    public Board(Context context,int width,int height, Activity activity){ //singleton
+    public Board(Context context,int width,int height, Activity activity){ //should add singleton
         this.activity=activity;
         parentView=new RelativeLayout(context);
 
@@ -124,8 +124,7 @@ public class Board {
 
     }
 
-    private void shuffleArray(Card[] ar)
-    {
+    private void shuffleArray(Card[] ar) {
         // Fisher–Yates shuffle
         Random randIndex = ThreadLocalRandom.current();
         for (int i = ar.length - 1; i > 0; i--)
