@@ -17,11 +17,7 @@ public interface GameInterface {
         }
     }
 
-    public final static String CARD_STR="Card";
-    public final static String TIMER_STR="Timer";
     public final static int DELAY_1000MS=1000;
-    public final static String LOSE_STR="You Lose!";
-    public final static String WIN_STR="You WIN!";
 
     public final static int HARD_TIMER=60;
     public final static int MEDIUM_TIMER=45;
@@ -29,9 +25,6 @@ public interface GameInterface {
     public final static int BOARD_WIDTH=4;
     public final static int ZERO=0;
 
-    public final static String usernameKey="username";
-    public final static String ageKey="age";
-    public final static String CARD_WIDTH_KEY="cardWidth";
 
     public static int[] animals = {R.drawable.animals_1,R.drawable.animals_2,R.drawable.animals_3,
             R.drawable.animals_4,R.drawable.animals_5,R.drawable.animals_6,

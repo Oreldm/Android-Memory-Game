@@ -19,7 +19,7 @@ public class Card {
         this.activity=activity;
         this.context=context;
         button=new Button(context);
-        button.setText(GameInterface.CARD_STR);
+        button.setText(context.getString(R.string.card_str));
         button.setBackgroundResource(R.drawable.tile);
         this.cardIndex=lastCardIndex;
         button.setOnClickListener(new CardListener(button,cardIndex,context,this,activity));
@@ -32,7 +32,7 @@ public class Card {
     public Card(Context context, Card card){
         this.context=context;
         button=new Button(context);
-        button.setText(GameInterface.CARD_STR);
+        button.setText(context.getString(R.string.card_str));
         button.setBackgroundResource(R.drawable.tile);
         this.cardIndex=card.cardIndex;
         button.setOnClickListener(new CardListener(button,cardIndex,context,this,activity));

@@ -21,8 +21,8 @@ public class WelcomePageActivity extends AppCompatActivity {
         final EditText ageEdit = (EditText) findViewById(R.id.ageInputID);
         String username=usernameEdit.getText().toString();
         String age = ageEdit.getText().toString();
-        i.putExtra(GameInterface.usernameKey,username);
-        i.putExtra(GameInterface.ageKey,age);
+        i.putExtra(getString(R.string.usernamekey),username);
+        i.putExtra(getString(R.string.agekey),age);
 
         startActivity(i);
     }

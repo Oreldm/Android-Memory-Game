@@ -27,8 +27,8 @@ public class StartGameActivity extends AppCompatActivity {
         if(welcomePageData==null){
             return;
         }
-        username = welcomePageData.getString(GameInterface.usernameKey);
-        String age = welcomePageData.getString(GameInterface.ageKey);
+        username = welcomePageData.getString(getString(R.string.usernamekey));
+        String age = welcomePageData.getString(getString(R.string.agekey));
         ((TextView)findViewById(R.id.usernameID)).setText(username);
         ((TextView)findViewById(R.id.textView5)).setText(age);
 
@@ -65,8 +65,8 @@ public class StartGameActivity extends AppCompatActivity {
         }
 
         Intent i = new Intent(this, GameActivity.class);
-        i.putExtra(GameInterface.CARD_WIDTH_KEY,width);
-        i.putExtra(GameInterface.usernameKey,username);
+        i.putExtra(getString(R.string.card_width_key),width);
+        i.putExtra(getString(R.string.usernamekey),username);
         startActivity(i);
     }
 

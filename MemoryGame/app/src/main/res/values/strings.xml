@@ -9,4 +9,12 @@
         <item>Hard</item>
     </string-array>
     <string name="title_activity_game">GameActivity</string>
+
+    <string name="card_str">Card</string>
+    <string name="timer_str">Timer</string>
+    <string name="lose_str">You Lose!</string>
+    <string name="win_str">You WIN!</string>
+    <string name="usernamekey">username</string>
+    <string name="agekey">age</string>
+    <string name="card_width_key">cardWidth</string>
 </resources>

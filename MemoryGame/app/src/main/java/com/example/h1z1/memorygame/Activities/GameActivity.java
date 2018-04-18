@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
+import com.example.h1z1.memorygame.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,8 +23,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle gameIntentData = getIntent().getExtras();
         nameText=new TextView(this);
-        nameString=gameIntentData.getString(GameInterface.usernameKey);
-        int width = gameIntentData.getInt(GameInterface.CARD_WIDTH_KEY);
+        nameString=gameIntentData.getString(getString(R.string.usernamekey));
+        int width = gameIntentData.getInt(getString(R.string.card_width_key));
         if(width==GameInterface.LEVELS.HARD.getValue()){
             counter=GameInterface.HARD_TIMER;
         } else if(width==GameInterface.LEVELS.MEDIUM.getValue()){
@@ -39,14 +42,14 @@ public class GameActivity extends AppCompatActivity {
     private boolean TimerMethod()
     {
         if(counter==GameInterface.ZERO){
-            WinLostActivity.status=GameInterface.LOSE_STR;
+            WinLostActivity.status=getString(R.string.lose_str);
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
             cardsUp=GameInterface.ZERO;
             finish();
             return false;
         } else if(GameActivity.cardsUp==Board.width*Board.height){
-            WinLostActivity.status=GameInterface.WIN_STR;
+            WinLostActivity.status=getString(R.string.win_str);
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
             cardsUp=GameInterface.ZERO;

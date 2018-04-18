@@ -62,10 +62,10 @@ public class CardListener implements View.OnClickListener
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
-                        button.setText(GameInterface.CARD_STR);
+                        button.setText(context.getString(R.string.card_str));
                         button.setBackgroundResource(R.drawable.tile);
                         card.isUp=false;
-                        Board.cardUp.button.setText(GameInterface.CARD_STR);
+                        Board.cardUp.button.setText(context.getString(R.string.card_str));
                         Board.cardUp.button.setBackgroundResource(R.drawable.tile);
                         Board.cardUp=null;
                     }

@@ -59,7 +59,7 @@ public class Board {
         tableLayout = new TableLayout(context);
         parentView.setBackgroundResource(R.drawable.gamebackground);
 
-        text.setText(GameInterface.TIMER_STR);
+        text.setText(context.getString(R.string.timer_str));
         nameText.setText(GameActivity.nameString);
 
         for (int i = 0; i < height; i++)
