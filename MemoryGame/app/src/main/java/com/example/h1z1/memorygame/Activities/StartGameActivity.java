@@ -8,7 +8,10 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -45,6 +48,19 @@ public class StartGameActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
         mAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, array);
         spinner.setAdapter(mAdapter);
+        Button button=findViewById(R.id.button);
+        /*
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        Button button=findViewById(R.id.button);
+        button.startAnimation(shake);
+
+
+        Animation resizeAnimationSmall = new ResizeAnimation(this,button,button.getWidth(),button.getHeight(),button.getWidth()-60,button.getHeight()-60);
+        button.startAnimation(resizeAnimationSmall);
+        */
+        Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
+        button.startAnimation(pulse);
+
     }
 
 
