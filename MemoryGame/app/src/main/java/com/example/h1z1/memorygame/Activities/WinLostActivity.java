@@ -1,6 +1,9 @@
 package com.example.h1z1.memorygame.Activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,6 +15,7 @@ import com.example.h1z1.memorygame.R;
 public class WinLostActivity extends AppCompatActivity {
 
     public static String status="Win";
+    Context context=this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,5 +37,16 @@ public class WinLostActivity extends AppCompatActivity {
 
         layout.addView(redButton, buttonDetails);
         setContentView(layout);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                Intent i = new Intent(context, StartGameActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }, 1000);
+
+
     }
 }

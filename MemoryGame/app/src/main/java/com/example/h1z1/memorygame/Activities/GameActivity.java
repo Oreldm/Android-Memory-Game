@@ -40,19 +40,6 @@ public class GameActivity extends AppCompatActivity {
         int height=4;
         final Board board= new Board(this,width,height,this);
         timerText=board.text;
-        /*board.myTimer = new Timer();
-        board.myTimer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    boolean shouldStop=TimerMethod();
-                    if(!shouldStop){
-                        board.myTimer.cancel();
-                        board.myTimer.purge();
-                    }
-                }
-
-        }, 0, 1000);
-*/
 
         setContentView(board.parentView);
     }
@@ -60,11 +47,6 @@ public class GameActivity extends AppCompatActivity {
 
     private boolean TimerMethod()
     {
-        //This method is called directly by the timer
-        //and runs in the same thread as the timer.
-
-        //We call the method that will work with the UI
-        //through the runOnUiThread method.
         if(counter==0){
             WinLostActivity.status="You Lose!";
             Intent i = new Intent(this, WinLostActivity.class);
@@ -99,8 +81,6 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
-        /*Board.myTimer.cancel();
-        Board.myTimer.purge();*/
         isInFocus = hasFocus;
         if(hasFocus){
             Board.myTimer=new Timer();
@@ -126,9 +106,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        /*
-        Board.myTimer.cancel();
-        Board.myTimer.purge();*/
+
         if (!isInFocus) finish();
     }
 
