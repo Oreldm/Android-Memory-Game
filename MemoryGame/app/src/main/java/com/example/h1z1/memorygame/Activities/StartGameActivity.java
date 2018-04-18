@@ -48,16 +48,14 @@ public class StartGameActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinner);
         mAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, array);
         spinner.setAdapter(mAdapter);
-        Button button=findViewById(R.id.button);
-        /*
+
+
         Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        TextView title=findViewById(R.id.TitleID);
+        title.startAnimation(shake);
+
+
         Button button=findViewById(R.id.button);
-        button.startAnimation(shake);
-
-
-        Animation resizeAnimationSmall = new ResizeAnimation(this,button,button.getWidth(),button.getHeight(),button.getWidth()-60,button.getHeight()-60);
-        button.startAnimation(resizeAnimationSmall);
-        */
         Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
         button.startAnimation(pulse);
 
