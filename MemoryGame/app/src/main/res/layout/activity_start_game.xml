@@ -11,16 +11,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layoutDirection="ltr"
-        android:background="@drawable/background">
+        android:background="@drawable/backgroundstartgameright"
+        >
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="118dp" />
+            android:layout_height="151dp" />
 
         <TextView
             android:id="@+id/TitleID"
             android:layout_width="match_parent"
-            android:layout_height="118dp"
+            android:layout_height="84dp"
             android:text="Memory Game!"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
