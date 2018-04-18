@@ -1,6 +1,7 @@
 package com.example.h1z1.memorygame.Activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -35,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
         } else if(width==GameInterface.LEVELS.MEDIUM.getValue()){
             counter=45;
         }else
-            counter=5;
+            counter=30;
         int height=4;
         final Board board= new Board(this,width,height,this);
         timerText=board.text;
@@ -52,7 +53,6 @@ public class GameActivity extends AppCompatActivity {
 
         }, 0, 1000);
 */
-
 
         setContentView(board.parentView);
     }

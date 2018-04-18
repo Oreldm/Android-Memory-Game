@@ -2,7 +2,9 @@ package com.example.h1z1.memorygame.Activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Gravity;
@@ -40,6 +42,7 @@ public class Board {
     public Board(Context context,int width,int height, Activity activity){ //singleton
         this.activity=activity;
         parentView=new RelativeLayout(context);
+
         text= new TextView(context);
         nameText=new TextView(context);
         LinearLayout linearLayout = new LinearLayout(context);
@@ -59,6 +62,7 @@ public class Board {
 
 
         tableLayout = new TableLayout(context);
+        parentView.setBackgroundResource(R.drawable.gamebackground);
 
         text.setText("timer");
         nameText.setText(GameActivity.nameString);
