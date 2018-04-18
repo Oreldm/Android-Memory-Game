@@ -30,7 +30,8 @@
             android:gravity="center"
             android:text="Please write your name and your age"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,7 +78,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="115dp"
+            android:layout_height="125dp"
             android:layoutDirection="ltr"
             android:orientation="horizontal">
 
@@ -120,14 +121,17 @@
         <Button
             android:id="@+id/startGameButtonID"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="72dp"
             android:layout_margin="@dimen/fab_margin"
-            android:gravity="center"
-            android:text=" --PRESS HERE TO START GAME-- "
-            android:textColor="@android:color/white"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:onClick="onClick"/>
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text=" --PRESS HERE TO START GAME-- "
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
