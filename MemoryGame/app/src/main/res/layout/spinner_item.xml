@@ -4,6 +4,6 @@
     android:layout_height="fill_parent"
     android:gravity="top"
     android:singleLine="true"
-    android:textColor="#ffffff"
+    android:textColor="@android:color/black"
     />
 

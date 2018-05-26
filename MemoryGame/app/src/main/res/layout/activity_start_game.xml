@@ -9,10 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layoutDirection="ltr"
         android:background="@drawable/backgroundstartgameright"
-        >
+        android:layoutDirection="ltr"
+        android:orientation="vertical">
 
         <Space
             android:layout_width="match_parent"
@@ -57,21 +56,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <Space
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="318dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layoutDirection="ltr">
+            android:layoutDirection="ltr"
+            android:orientation="horizontal">
 
             <Space
                 android:layout_width="196dp"
-                android:layout_height="19dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="253dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="Level:"
                 android:textColor="@android:color/background_light"
@@ -85,10 +89,11 @@
                 android:id="@+id/spinner"
                 style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@android:drawable/spinner_background"
                 android:dropDownWidth="match_parent"
-                android:popupBackground="@null"
+                android:popupBackground="@android:color/holo_green_dark"
                 android:visibility="visible"
                 app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
@@ -96,9 +101,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1" />
+
         </LinearLayout>
 
         <Space

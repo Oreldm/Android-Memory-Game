@@ -65,7 +65,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:maxLength="7"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/textView3"
@@ -107,7 +107,7 @@
                 android:ems="10"
                 android:inputType="number"
                 android:maxLength="2"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/textViewmargin2"
@@ -124,12 +124,11 @@
             android:layout_height="72dp"
             android:layout_margin="@dimen/fab_margin"
             android:layout_weight="1"
-            android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="onClick"
             android:text=" --PRESS HERE TO START GAME-- "
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
 

@@ -28,7 +28,7 @@ public class Board {
     TableLayout tableLayout;
 
     static public Timer myTimer;
-    TextView text;
+    TextView counterText;
     TextView nameText;
     private Activity activity;
 
@@ -38,7 +38,7 @@ public class Board {
         this.activity=activity;
         parentView=new RelativeLayout(context);
 
-        text= new TextView(context);
+        counterText= new TextView(context);
         nameText=new TextView(context);
         LinearLayout linearLayout = new LinearLayout(context);
         this.width=width;
@@ -59,7 +59,7 @@ public class Board {
         tableLayout = new TableLayout(context);
         parentView.setBackgroundResource(R.drawable.gamebackground);
 
-        text.setText(context.getString(R.string.timer_str));
+        counterText.setText(context.getString(R.string.timer_str));
         nameText.setText(GameActivity.nameString);
 
         for (int i = 0; i < height; i++)
@@ -78,23 +78,20 @@ public class Board {
         tableLayout.setId(3);
 
         nameText.setId(244);
-        text.setId(245);
+        counterText.setId(245);
 
 
-
-        relativeParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        relativeParams.addRule(RelativeLayout.LEFT_OF,244);
-        linearLayout.addView(nameText);
+        linearLayout.addView(counterText);
 
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
         int screenWidth = size.x;
-        int placeForCounter=screenWidth-(2*GameActivity.nameString.length()*GameActivity.nameString.length())-70;
+        int placeForCounter=screenWidth-(2*GameActivity.nameString.length()*GameActivity.nameString.length())-150;
 
-        relativeParams.setMargins(GameInterface.ZERO,GameInterface.ZERO,placeForCounter,GameInterface.ZERO);
-        linearLayout.addView(text,relativeParams);
+        relativeParams.setMargins(placeForCounter,GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO);
+        linearLayout.addView(nameText,relativeParams);
         relativeParams.setMargins(GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO);
 
         parentView.addView(linearLayout, relativeParams);
