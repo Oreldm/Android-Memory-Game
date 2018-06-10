@@ -25,9 +25,6 @@ public class GameActivity extends AppCompatActivity {
     static int counter = 0;
     static int cardsUp = 0;
     Context mContext;
-    LocationManager mLocationManager;
-    public static double latitude =0;
-    public static double longitude =0;
 
 
     @Override
@@ -47,19 +44,7 @@ public class GameActivity extends AppCompatActivity {
         int height = GameInterface.BOARD_WIDTH;
         final Board board = new Board(this, width, height, this);
         timerText = board.counterText;
-        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5, 5, mLocationListener);
 
         setContentView(board.parentView);
     }
@@ -131,30 +116,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    private final LocationListener mLocationListener = new LocationListener() {
-        @Override
-        public void onLocationChanged(Location location) {
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
-
-
-    };
 
 
 
