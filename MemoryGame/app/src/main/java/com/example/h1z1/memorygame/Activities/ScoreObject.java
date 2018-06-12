@@ -36,6 +36,4 @@ public class ScoreObject implements Comparable<ScoreObject>{
             return 1;
         return 0;
     }
-
-
 }

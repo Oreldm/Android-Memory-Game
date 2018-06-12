@@ -4,15 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import tyrantgit.explosionfield.ExplosionField;
 import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class GameActivity extends AppCompatActivity {
+    public AppCompatActivity a = this;
     TextView timerText; //timer text
     TextView nameText;
     static String nameString;
@@ -24,6 +26,9 @@ public class GameActivity extends AppCompatActivity {
     final static int EASY_SCORE = 1;
     final static int MEDIUM_SCORE = 2;
     final static int HARD_SCORE = 3;
+    Board board;
+
+    ExplosionField explosionField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +49,8 @@ public class GameActivity extends AppCompatActivity {
             multiplier=EASY_SCORE;
         }
         int height = GameInterface.BOARD_WIDTH;
-        final Board board = new Board(this, width, height, this);
+        this.board = new Board(this, width, height, this);
         timerText = board.counterText;
-
 
         setContentView(board.parentView);
     }
@@ -55,6 +59,7 @@ public class GameActivity extends AppCompatActivity {
     private boolean TimerMethod()
     {
         if(counter==GameInterface.ZERO){
+            //Lose because of zero
             WinLostActivity.status=getString(R.string.lose_str);
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
@@ -63,6 +68,7 @@ public class GameActivity extends AppCompatActivity {
             finish();
             return false;
         } else if(GameActivity.cardsUp==Board.width*Board.height){
+            //WIN
             WinLostActivity.status=getString(R.string.win_str);
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
@@ -74,16 +80,24 @@ public class GameActivity extends AppCompatActivity {
             finish();
             return false;
         }else{
+            //keep going- game is still live
             this.runOnUiThread(Timer_Tick);
             return true;
         }
     }
 
+
     private Runnable Timer_Tick = new Runnable() {
         public void run() {
             timerText.setText(Integer.toString(counter));
             counter--;
+            if(counter==0){
 
+               /* Animation pulse = AnimationUtils.loadAnimation(Board.cont, R.anim.kaboom);
+                board.parentView.startAnimation(pulse);*/
+                explosionField = ExplosionField.attach2Window(a);
+                explosionField.explode(board.parentView);
+            }
         }
     };
 

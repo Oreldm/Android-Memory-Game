@@ -25,16 +25,18 @@ public class Board {
     static int height;
     RelativeLayout.LayoutParams relativeParams;
     RelativeLayout parentView;
-    TableLayout tableLayout;
+    public TableLayout tableLayout;
 
     static public Timer myTimer;
     TextView counterText;
     TextView nameText;
     private Activity activity;
+    public static Context cont;
 
     public static Card cardUp=null;
 
     public Board(Context context,int width,int height, Activity activity){ //should add singleton
+        this.cont=context;
         this.activity=activity;
         parentView=new RelativeLayout(context);
 

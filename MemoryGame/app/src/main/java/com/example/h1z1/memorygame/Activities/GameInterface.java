@@ -21,7 +21,7 @@ public interface GameInterface {
 
     public final static int HARD_TIMER=60;
     public final static int MEDIUM_TIMER=45;
-    public final static int EASY_TIMER=30;
+    public final static int EASY_TIMER=5;
     public final static int BOARD_WIDTH=4;
     public final static int ZERO=0;
 
