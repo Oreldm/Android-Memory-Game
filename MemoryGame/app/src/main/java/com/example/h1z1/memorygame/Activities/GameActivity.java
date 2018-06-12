@@ -31,8 +31,6 @@ public class GameActivity extends AppCompatActivity {
     final static int HARD_SCORE = 3;
     Board board;
 
-    ExplosionField explosionField;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,8 +93,8 @@ public class GameActivity extends AppCompatActivity {
             timerText.setText(Integer.toString(counter));
             counter--;
             if(counter==0){
-                explosionField = ExplosionField.attach2Window(a);
-                explosionField.explode(board.parentView);
+                ExplosionField explode = ExplosionField.attach2Window(a);
+                explode.explode(board.parentView);
             }
         }
     };
