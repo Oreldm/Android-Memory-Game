@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import tyrantgit.explosionfield.ExplosionField;
+
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
@@ -92,9 +95,6 @@ public class GameActivity extends AppCompatActivity {
             timerText.setText(Integer.toString(counter));
             counter--;
             if(counter==0){
-
-               /* Animation pulse = AnimationUtils.loadAnimation(Board.cont, R.anim.kaboom);
-                board.parentView.startAnimation(pulse);*/
                 explosionField = ExplosionField.attach2Window(a);
                 explosionField.explode(board.parentView);
             }

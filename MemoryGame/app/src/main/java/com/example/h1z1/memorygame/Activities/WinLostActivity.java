@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,6 +42,11 @@ public class WinLostActivity extends AppCompatActivity {
 
         layout.addView(redButton, buttonDetails);
         setContentView(layout);
+
+        Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        if(status.equals(getString(R.string.win_str)))
+            redButton.startAnimation(shake);
+
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
