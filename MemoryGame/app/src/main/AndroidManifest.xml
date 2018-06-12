@@ -12,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCv0EKZ7WxirSW0V-lrUI6zKt-8hl5QwRU" />
         <activity
             android:name=".Activities.WelcomePageActivity"
             android:label="@string/title_activity_welcome_page"
@@ -30,7 +36,8 @@
             android:name=".Activities.GameActivity"
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.WinLostActivity"></activity>
+        <activity android:name=".Activities.WinLostActivity" />
+        <activity android:name=".Activities.leader_board_activity"></activity>
     </application>
 
 </manifest>

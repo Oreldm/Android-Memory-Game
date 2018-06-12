@@ -8,10 +8,11 @@ import android.widget.EditText;
 import com.example.h1z1.memorygame.R;
 
 public class WelcomePageActivity extends AppCompatActivity {
-
+    public static TableOfScores hst;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hst=new TableOfScores(this);
         setContentView(R.layout.activity_welcome_page);
     }
 
@@ -23,7 +24,6 @@ public class WelcomePageActivity extends AppCompatActivity {
         String age = ageEdit.getText().toString();
         i.putExtra(getString(R.string.usernamekey),username);
         i.putExtra(getString(R.string.agekey),age);
-
         startActivity(i);
     }
 

@@ -31,10 +31,10 @@ public class StartGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_game);
 
+        //location
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1); // put it at the right place
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1); // put it at the right place
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -47,8 +47,9 @@ public class StartGameActivity extends AppCompatActivity {
         }
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5, 5, mLocationListener);
 
-        Bundle welcomePageData = getIntent().getExtras();
 
+        //setting username & age
+        Bundle welcomePageData = getIntent().getExtras();
         if(welcomePageData==null){
             return;
         }
@@ -57,24 +58,26 @@ public class StartGameActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.usernameID)).setText(username);
         ((TextView)findViewById(R.id.textView5)).setText(age);
 
+        //levels Spinner
         ArrayList<String> array = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.level_arr)));
-
         Spinner spinner;
         ArrayAdapter<String> mAdapter;
         spinner = (Spinner) findViewById(R.id.spinner);
         mAdapter = new ArrayAdapter<String>(this, R.layout.spinner_item, array);
         spinner.setAdapter(mAdapter);
 
-
+        //title
         TextView title=findViewById(R.id.TitleID);
         Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
         title.startAnimation(shake);
 
-
+        //start button
         Button button=findViewById(R.id.button);
         Animation pulse = AnimationUtils.loadAnimation(this, R.anim.pulse);
         button.startAnimation(pulse);
 
+        //highscore button
+        Button highScoreButton=findViewById(R.id.buttonHighScore);
     }
 
 
@@ -92,6 +95,11 @@ public class StartGameActivity extends AppCompatActivity {
         Intent i = new Intent(this, GameActivity.class);
         i.putExtra(getString(R.string.card_width_key),width);
         i.putExtra(getString(R.string.usernamekey),username);
+        startActivity(i);
+    }
+
+    public void changeToHighScore(View view){
+        Intent i= new Intent(this,leader_board_activity.class);
         startActivity(i);
     }
 

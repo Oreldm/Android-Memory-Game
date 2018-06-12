@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:gravity="center|top"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="com.example.h1z1.memorygame.Activities.leader_board_activity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:text="Leader Board"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="40dp" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="220sp"
+        android:fadeScrollbars="false">
+        <TableLayout
+            android:id="@+id/leaderBoardTable"
+            android:layout_width="wrap_content"
+            android:layout_height="220sp">
+        </TableLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/googleMapId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <fragment
+            android:id="@+id/actualMap"
+            android:name="com.example.h1z1.memorygame.Activities.leader_board_activity"
+            class="com.google.android.gms.maps.MapFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></fragment>
+
+    </FrameLayout>
+
+</LinearLayout>

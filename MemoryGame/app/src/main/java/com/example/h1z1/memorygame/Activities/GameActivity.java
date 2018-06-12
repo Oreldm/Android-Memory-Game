@@ -1,14 +1,8 @@
 package com.example.h1z1.memorygame.Activities;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
@@ -25,7 +19,11 @@ public class GameActivity extends AppCompatActivity {
     static int counter = 0;
     static int cardsUp = 0;
     Context mContext;
-
+    static int score=0;
+    static int multiplier=0;
+    final static int EASY_SCORE = 1;
+    final static int MEDIUM_SCORE = 2;
+    final static int HARD_SCORE = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +35,14 @@ public class GameActivity extends AppCompatActivity {
         int width = gameIntentData.getInt(getString(R.string.card_width_key));
         if (width == GameInterface.LEVELS.HARD.getValue()) {
             counter = GameInterface.HARD_TIMER;
+            multiplier=HARD_SCORE;
         } else if (width == GameInterface.LEVELS.MEDIUM.getValue()) {
             counter = GameInterface.MEDIUM_TIMER;
-        } else
+            multiplier=MEDIUM_SCORE;
+        } else {
             counter = GameInterface.EASY_TIMER;
+            multiplier=EASY_SCORE;
+        }
         int height = GameInterface.BOARD_WIDTH;
         final Board board = new Board(this, width, height, this);
         timerText = board.counterText;
@@ -57,6 +59,7 @@ public class GameActivity extends AppCompatActivity {
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
             cardsUp=GameInterface.ZERO;
+            score=0;
             finish();
             return false;
         } else if(GameActivity.cardsUp==Board.width*Board.height){
@@ -64,6 +67,10 @@ public class GameActivity extends AppCompatActivity {
             Intent i = new Intent(this, WinLostActivity.class);
             startActivity(i);
             cardsUp=GameInterface.ZERO;
+            score=multiplier*counter;
+            ScoreObject se= new ScoreObject(score, nameString);
+            WelcomePageActivity.hst.addScore(se);
+            WelcomePageActivity.hst.tableToMemory();
             finish();
             return false;
         }else{
@@ -114,10 +121,4 @@ public class GameActivity extends AppCompatActivity {
 
         if (!isInFocus) finish();
     }
-
-
-
-
-
-
 }
