@@ -1,6 +1,5 @@
 package com.example.h1z1.memorygame.Activities;
 
-import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -28,7 +27,9 @@ public class ScoreObject implements Comparable<ScoreObject>{
     }
 
     @Override
-    public int compareTo(@NonNull ScoreObject other) {
+    public int compareTo(ScoreObject other) {
+        if(other==null)
+            return 1;
         if(this.score<other.score)
             return -1;
         else if(this.score>other.score)
