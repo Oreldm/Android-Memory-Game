@@ -17,4 +17,7 @@
     <string name="usernamekey">username</string>
     <string name="agekey">age</string>
     <string name="card_width_key">cardWidth</string>
+    <string name="change_str">change</string>
+    <string name="right_str">right</string>
+    <string name="listen_message">Start</string>
 </resources>

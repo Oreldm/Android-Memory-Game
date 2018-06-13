@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.concurrent.ThreadLocalRandom;
@@ -26,6 +27,7 @@ public class Board {
     RelativeLayout.LayoutParams relativeParams;
     RelativeLayout parentView;
     public TableLayout tableLayout;
+    static public Card cardArr[];
 
     static public Timer myTimer;
     TextView counterText;
@@ -34,6 +36,9 @@ public class Board {
     public static Context cont;
 
     public static Card cardUp=null;
+    TableRow tableRow;
+    public static ArrayList<Card> cards = new ArrayList<>();
+
 
     public Board(Context context,int width,int height, Activity activity){ //should add singleton
         this.cont=context;
@@ -46,7 +51,7 @@ public class Board {
         this.width=width;
         this.height=height;
 
-        Card cardArr[] = new Card[width*height];
+        cardArr = new Card[width*height];
         for(int i=0; i<width*height;i=i+2){
             cardArr[i]=new Card(context,false,activity);
             cardArr[i+1]=new Card(context,true,activity);
@@ -64,13 +69,15 @@ public class Board {
         counterText.setText(context.getString(R.string.timer_str));
         nameText.setText(GameActivity.nameString);
 
+
+        //initialize board
         for (int i = 0; i < height; i++)
         {
-            TableRow tableRow = new TableRow(context);
+            tableRow = new TableRow(context);
             for (int j = 0; j < width; j++)
             {
-
                 Card card = new Card(context, cardArr[width*i+j]); //added it because of parent viewgroup exception
+                cards.add(card);
                 tableRow.addView(card.button);
             }
             tableLayout.addView(tableRow);
