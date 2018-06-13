@@ -20,4 +20,5 @@
     <string name="change_str">change</string>
     <string name="right_str">right</string>
     <string name="listen_message">Start</string>
+    <string name="score_table_name">TableOfScores</string>
 </resources>

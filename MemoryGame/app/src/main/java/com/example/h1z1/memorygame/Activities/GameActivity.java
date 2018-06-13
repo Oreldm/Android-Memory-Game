@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 
 import tyrantgit.explosionfield.ExplosionField;
 
-import android.util.Log;
 import android.widget.TextView;
 
 import com.example.h1z1.memorygame.R;
@@ -37,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
     final static int HARD_SCORE = 3;
     Board board;
     private boolean isBind = false;
-    public MyService.SensorServiceBinder binder;
+    public MyService.SensorBind binder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +68,7 @@ public class GameActivity extends AppCompatActivity {
     private ServiceConnection bindService = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder service) {
-            binder = (MyService.SensorServiceBinder) service;
+            binder = (MyService.SensorBind) service;
             isBind = true;
             binder.notifyService(getString(R.string.listen_message));
         }

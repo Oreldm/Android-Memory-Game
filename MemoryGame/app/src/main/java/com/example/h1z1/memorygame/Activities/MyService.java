@@ -17,7 +17,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import com.example.h1z1.memorygame.R;
 
 public class MyService extends Service implements SensorEventListener {
-    public SensorServiceBinder binder = new SensorServiceBinder();
+    public SensorBind binder = new SensorBind();
     private Sensor rotationSens;
     private SensorManager sensManager;
     private Handler serviceHandler;
@@ -51,26 +51,6 @@ public class MyService extends Service implements SensorEventListener {
         serviceHandler = new Handler(threadSens.getLooper());
     }
 
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        try {
-            sensManager.unregisterListener(this);
-        } catch (Exception e) {
-
-        }
-        try {
-            threadSens.quit();
-        } catch (Exception e) {
-        }
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        binder.currentService = this;
-        return binder;
-    }
 
     @Override
     public boolean onUnbind(Intent intent) {
@@ -118,7 +98,27 @@ public class MyService extends Service implements SensorEventListener {
 
     }
 
-    class SensorServiceBinder extends Binder {
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            sensManager.unregisterListener(this);
+        } catch (Exception e) {
+
+        }
+        try {
+            threadSens.quit();
+        } catch (Exception e) {
+        }
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        binder.currentService = this;
+        return binder;
+    }
+
+    class SensorBind extends Binder {
         private MyService currentService;
         void notifyService(String msg) {
             if (msg != getString(R.string.listen_message) || listenerBool) return;
