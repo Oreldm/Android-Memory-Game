@@ -111,7 +111,7 @@ public class Board {
                         (TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
 
 
-        tableRowParams.setMargins(GameInterface.ZERO, GameInterface.ZERO, screenWidth / 16, GameInterface.ZERO);
+        tableRowParams.setMargins(screenWidth / 8, GameInterface.ZERO, GameInterface.ZERO, GameInterface.ZERO);
 
         if (width == GameInterface.LEVELS.EASY.getValue()) {
 
