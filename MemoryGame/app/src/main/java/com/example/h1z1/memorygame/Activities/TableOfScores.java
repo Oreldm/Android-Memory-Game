@@ -1,7 +1,7 @@
 package com.example.h1z1.memorygame.Activities;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,21 +16,21 @@ public class TableOfScores {
     private Context context;
 
     public TableOfScores(Context context) {
-        currentMinScore=-1;
+        currentMinScore = -1;
         scoreArr = new ArrayList<>();
         this.context = context;
         SharedPreferences shared = context.getSharedPreferences(context.getString(R.string.score_table_name), android.content.Context.MODE_PRIVATE);
-        Map<String,?> scoreToJson = shared.getAll();
-        for (Map.Entry<String, ?> e : scoreToJson.entrySet()){
+        Map<String, ?> scoreToJson = shared.getAll();
+        for (Map.Entry<String, ?> e : scoreToJson.entrySet()) {
             String jsonStr = e.getValue().toString();
-            scoreArr.add(new Gson().fromJson(jsonStr,ScoreObject.class));
+            scoreArr.add(new Gson().fromJson(jsonStr, ScoreObject.class));
         }
     }
 
     public void tableToMemory() {
         SharedPreferences.Editor e = context.getSharedPreferences(context.getString(R.string.score_table_name), android.content.Context.MODE_PRIVATE).edit();
-        int i=0;
-        while(i < scoreArr.size()) {
+        int i = 0;
+        while (i < scoreArr.size()) {
             e.putString(this.getClass().getSimpleName() + i, new Gson().toJson(this.scoreArr.get(i)));
             i++;
         }
@@ -38,7 +38,7 @@ public class TableOfScores {
     }
 
     public void addScore(ScoreObject s) {
-        if (scoreArr.size() < leader_board_activity.SIZE) {
+        if (scoreArr.size() < LeaderBoardActivity.SIZE) {
             //do nothing
         } else if (s.getScore() > currentMinScore) {
             scoreArr.remove(scoreArr.size() - 1);
@@ -49,7 +49,7 @@ public class TableOfScores {
         this.currentMinScore = scoreArr.get(scoreArr.size() - 1).getScore();
     }
 
-    public  ArrayList<ScoreObject> getScoreArr() {
+    public ArrayList<ScoreObject> getScoreArr() {
         return this.scoreArr;
     }
 }

@@ -13,33 +13,31 @@ import android.widget.Button;
 import com.example.h1z1.memorygame.R;
 
 
-public class CardListener implements View.OnClickListener
-{
-    private final static int MARGIN_TO_ADD=100;
+public class CardListener implements View.OnClickListener {
+    private final static int MARGIN_TO_ADD = 100;
     Button button;
     int cardIndex;
     Context context;
     Card card;
     Activity activity;
-    private final static int PAIR=2;
+    private final static int PAIR = 2;
 
 
-    public CardListener(Button button, int cardIndex, Context context,Card card, Activity activity) {
-        this.button=button;
-        this.cardIndex=cardIndex;
-        this.context=context;
-        this.card=card;
-        this.activity=activity;
+    public CardListener(Button button, int cardIndex, Context context, Card card, Activity activity) {
+        this.button = button;
+        this.cardIndex = cardIndex;
+        this.context = context;
+        this.card = card;
+        this.activity = activity;
     }
 
     @Override
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
 
-        if(card.isUp || (Board.cardUp!=null && Board.cardUp.isUp==false)){
+        if (card.isUp || (Board.cardUp != null && Board.cardUp.isUp == false)) {
             return;
         }
-        card.isUp=true;
+        card.isUp = true;
         button.setText("");
         Drawable dr = context.getResources().getDrawable(GameInterface.animals[cardIndex]);
         Bitmap bitmap = ((BitmapDrawable) dr).getBitmap();
@@ -47,33 +45,33 @@ public class CardListener implements View.OnClickListener
         dimensions.inJustDecodeBounds = true;
         Bitmap mBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.tile, dimensions);
         int height = dimensions.outHeight;
-        int width =  dimensions.outWidth;
+        int width = dimensions.outWidth;
 
-        Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, width+MARGIN_TO_ADD, height+MARGIN_TO_ADD, true));
+        Drawable d = new BitmapDrawable(context.getResources(), Bitmap.createScaledBitmap(bitmap, width + MARGIN_TO_ADD, height + MARGIN_TO_ADD, true));
         button.setBackground(d);
 
 
-        if(Board.cardUp!=null){
-            if(Board.cardUp.cardIndex==this.cardIndex){
-                GameActivity.cardsUp+=PAIR;
-                Board.cardUp=null;
+        if (Board.cardUp != null) {
+            if (Board.cardUp.cardIndex == this.cardIndex) {
+                GameActivity.cardsUp += PAIR;
+                Board.cardUp = null;
                 return;
-            } else{
+            } else {
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         button.setText(context.getString(R.string.card_str));
                         button.setBackgroundResource(R.drawable.tile);
-                        card.isUp=false;
+                        card.isUp = false;
                         Board.cardUp.button.setText(context.getString(R.string.card_str));
                         Board.cardUp.button.setBackgroundResource(R.drawable.tile);
-                        Board.cardUp=null;
+                        Board.cardUp = null;
                     }
                 }, GameInterface.DELAY_1000MS);
             }
-            Board.cardUp.isUp=false;
-        }else{
-            Board.cardUp=this.card;
+            Board.cardUp.isUp = false;
+        } else {
+            Board.cardUp = this.card;
         }
     }
 

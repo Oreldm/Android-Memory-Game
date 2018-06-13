@@ -19,13 +19,14 @@ import java.util.TimerTask;
 
 public class WinLostActivity extends AppCompatActivity {
 
-    public static String status="";
-    Context context=this;
+    public static String status = "";
+    Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        RelativeLayout layout=new RelativeLayout(this);
+        RelativeLayout layout = new RelativeLayout(this);
         layout.setBackgroundResource(R.drawable.backgroundstartgameleft);
 
         RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(
@@ -44,7 +45,7 @@ public class WinLostActivity extends AppCompatActivity {
         setContentView(layout);
 
         Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
-        if(status.equals(getString(R.string.win_str)))
+        if (status.equals(getString(R.string.win_str)))
             redButton.startAnimation(shake);
 
 
@@ -53,17 +54,18 @@ public class WinLostActivity extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        }, (GameInterface.DELAY_1000MS+GameInterface.DELAY_1000MS/2));
+        }, (GameInterface.DELAY_1000MS + GameInterface.DELAY_1000MS / 2));
 
 
     }
 
     private boolean isInFocus = false;
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         isInFocus = hasFocus;
-        if(!hasFocus){
+        if (!hasFocus) {
             finish();
         }
     }

@@ -120,6 +120,7 @@ public class MyService extends Service implements SensorEventListener {
 
     class SensorBind extends Binder {
         private MyService currentService;
+
         void notifyService(String msg) {
             if (msg != getString(R.string.listen_message) || listenerBool) return;
             Sensor s = sensManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);

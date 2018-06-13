@@ -35,26 +35,26 @@ public class Board {
     private Activity activity;
     public static Context cont;
 
-    public static Card cardUp=null;
+    public static Card cardUp = null;
     TableRow tableRow;
     public static ArrayList<Card> cards = new ArrayList<>();
 
 
-    public Board(Context context,int width,int height, Activity activity){ //should add singleton
-        this.cont=context;
-        this.activity=activity;
-        parentView=new RelativeLayout(context);
+    public Board(Context context, int width, int height, Activity activity) { //should add singleton
+        this.cont = context;
+        this.activity = activity;
+        parentView = new RelativeLayout(context);
 
-        counterText= new TextView(context);
-        nameText=new TextView(context);
+        counterText = new TextView(context);
+        nameText = new TextView(context);
         LinearLayout linearLayout = new LinearLayout(context);
-        this.width=width;
-        this.height=height;
+        this.width = width;
+        this.height = height;
 
-        cardArr = new Card[width*height];
-        for(int i=0; i<width*height;i=i+2){
-            cardArr[i]=new Card(context,false,activity);
-            cardArr[i+1]=new Card(context,true,activity);
+        cardArr = new Card[width * height];
+        for (int i = 0; i < width * height; i = i + 2) {
+            cardArr[i] = new Card(context, false, activity);
+            cardArr[i + 1] = new Card(context, true, activity);
         }
         shuffleArray(cardArr);
 
@@ -71,19 +71,17 @@ public class Board {
 
 
         //initialize board
-        for (int i = 0; i < height; i++)
-        {
+        for (int i = 0; i < height; i++) {
             tableRow = new TableRow(context);
-            for (int j = 0; j < width; j++)
-            {
-                Card card = new Card(context, cardArr[width*i+j]); //added it because of parent viewgroup exception
+            for (int j = 0; j < width; j++) {
+                Card card = new Card(context, cardArr[width * i + j]); //added it because of parent viewgroup exception
                 cards.add(card);
                 tableRow.addView(card.button);
             }
             tableLayout.addView(tableRow);
         }
         tableLayout.setShrinkAllColumns(true);
-        tableLayout.setGravity(Gravity.CENTER_HORIZONTAL+Gravity.CENTER);
+        tableLayout.setGravity(Gravity.CENTER_HORIZONTAL + Gravity.CENTER);
         tableLayout.setId(3);
 
         nameText.setId(244);
@@ -97,28 +95,27 @@ public class Board {
         Point size = new Point();
         display.getSize(size);
         int screenWidth = size.x;
-        int placeForCounter=screenWidth-(2*GameActivity.nameString.length()*GameActivity.nameString.length())-150;
+        int placeForCounter = screenWidth - (2 * GameActivity.nameString.length() * GameActivity.nameString.length()) - 150;
 
-        relativeParams.setMargins(placeForCounter,GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO);
-        linearLayout.addView(nameText,relativeParams);
-        relativeParams.setMargins(GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO,GameInterface.ZERO);
+        relativeParams.setMargins(placeForCounter, GameInterface.ZERO, GameInterface.ZERO, GameInterface.ZERO);
+        linearLayout.addView(nameText, relativeParams);
+        relativeParams.setMargins(GameInterface.ZERO, GameInterface.ZERO, GameInterface.ZERO, GameInterface.ZERO);
 
         parentView.addView(linearLayout, relativeParams);
         relativeParams.addRule(RelativeLayout.ALIGN_BOTTOM, 3);
-        parentView.addView(tableLayout,relativeParams);
+        parentView.addView(tableLayout, relativeParams);
         parentView.setLayoutParams(relativeParams);
 
-        TableLayout.LayoutParams tableRowParams=
+        TableLayout.LayoutParams tableRowParams =
                 new TableLayout.LayoutParams
-                        (TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+                        (TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
 
 
+        tableRowParams.setMargins(GameInterface.ZERO, GameInterface.ZERO, screenWidth / 16, GameInterface.ZERO);
 
-        tableRowParams.setMargins(GameInterface.ZERO, GameInterface.ZERO, screenWidth/16, GameInterface.ZERO);
+        if (width == GameInterface.LEVELS.EASY.getValue()) {
 
-        if(width==GameInterface.LEVELS.EASY.getValue()){
-
-            for(int i = 0, j = tableLayout.getChildCount(); i < j; i++) {
+            for (int i = 0, j = tableLayout.getChildCount(); i < j; i++) {
                 View view = tableLayout.getChildAt(i);
                 if (view instanceof TableRow) {
                     TableRow row = (TableRow) view;
@@ -133,8 +130,7 @@ public class Board {
     private void shuffleArray(Card[] ar) {
         // Fisher–Yates shuffle
         Random randIndex = ThreadLocalRandom.current();
-        for (int i = ar.length - 1; i > 0; i--)
-        {
+        for (int i = ar.length - 1; i > 0; i--) {
             int index = randIndex.nextInt(i + 1);
 
             //swap

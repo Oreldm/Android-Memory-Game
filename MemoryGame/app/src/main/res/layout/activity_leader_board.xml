@@ -9,7 +9,7 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="com.example.h1z1.memorygame.Activities.leader_board_activity">
+    tools:context="com.example.h1z1.memorygame.Activities.LeaderBoardActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
 
         <fragment
             android:id="@+id/actualMap"
-            android:name="com.example.h1z1.memorygame.Activities.leader_board_activity"
+            android:name="com.example.h1z1.memorygame.Activities.LeaderBoardActivity"
             class="com.google.android.gms.maps.MapFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"></fragment>

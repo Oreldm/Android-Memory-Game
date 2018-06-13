@@ -37,7 +37,7 @@
             android:label="@string/title_activity_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.WinLostActivity" />
-        <activity android:name=".Activities.leader_board_activity"></activity>
+        <activity android:name=".Activities.LeaderBoardActivity"></activity>
 
         <service android:enabled="true"  android:name="com.example.h1z1.memorygame.Activities.MyService">
             <intent-filter>

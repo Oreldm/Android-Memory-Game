@@ -90,7 +90,7 @@ public class GameActivity extends AppCompatActivity {
     };
 
 
-    private void turnAroundCards(Context context){
+    private void turnAroundCards(Context context) {
         for (Card e : Board.cards) {
             if (e.isUp) {
                 if (Board.cardUp != null) {
@@ -108,6 +108,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
     }
+
     private boolean TimerMethod() {
         if (counter == GameInterface.ZERO) {
             //Lose because of zero
